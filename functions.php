@@ -35,8 +35,7 @@ function hello_elementor_child_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
 
-function my_woo_outofstock_text( $text ) {
-	$text = __( 'Verkauft', 'oceanwp' );
-	return $text;
+add_filter('woocommerce_out_of_stock_message', 'custom_wc_out_of_stock_message');
+function custom_wc_out_of_stock_message() {
+    return __('Verkauft', 'woocommerce');
 }
-add_filter( 'ocean_woo_outofstock_text', 'my_woo_outofstock_text', 20 );
